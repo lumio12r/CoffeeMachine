@@ -1,26 +1,56 @@
-print("Write how many ml of water the coffee machine has: ")
-water = int(input())
-print("Write how many ml of milk the coffee machine has: ")
-milk = int(input())
-print("Write how many grams of coffee beans the coffee machine has: ")
-beans = int(input())
-print("Write how many cups of coffee you will need: ")
-how_many = int(input())
+amount_of_money = 550
+amount_of_water = 400
+amount_of_milk = 540
+amount_of_beans = 120
+amount_of_cups = 9
 
+print("The coffee machine has:")
+print(f"{amount_of_water} of water")
+print(f"{amount_of_milk} of milk")
+print(f"{amount_of_beans} of coffee beans")
+print(f"{amount_of_cups} of disposable cups")
+print(f"{amount_of_money} of money")
 
-maximally_water = water//200
-maximally_milk = milk//50
-maximally_beans = beans//15
-how_maximally = min(maximally_water, maximally_milk, maximally_beans)
-how_more = how_maximally - how_many
+print("Write action (buy, fill, take):")
+choice = input()
 
-if how_maximally == how_many:
-    print("Yes, I can make that amount of coffee ")
-elif how_maximally < how_many:
-    if how_maximally == 1:
-        print("No, I can make only {} cup of coffee".format(how_maximally))
-    else:
-        print("No, I can make only {} cups of coffee".format(how_maximally))
-elif how_maximally > how_many:
-    print("Yes, I can make that amount of coffee (and even {} more than that)".format(how_more))
+if choice.lower() == "buy":
+    print("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino")
+    coffee_choice = int(input())
+    if coffee_choice == 1:
+        amount_of_water -= 250
+        amount_of_beans -= 16
+        amount_of_money += 4
+        amount_of_cups -= 1
+    elif coffee_choice == 2:
+        amount_of_water -= 350
+        amount_of_milk -= 75
+        amount_of_beans -= 20
+        amount_of_money += 7
+        amount_of_cups -= 1
+    elif coffee_choice == 3:
+        amount_of_water -= 200
+        amount_of_milk -= 100
+        amount_of_beans -= 12
+        amount_of_money += 6
+        amount_of_cups -= 1
+elif choice.lower() == "fill":
+    print("Write how many ml of water do you want to add:")
+    amount_of_water += int(input())
+    print("Write how many ml of milk do you want to add:")
+    amount_of_milk += int(input())
+    print("Write how many grams of coffee beans do you want to add:")
+    amount_of_beans += int(input())
+    print("Write how many disposable cups of coffee do you want to add:")
+    amount_of_cups += int(input())
+elif choice.lower() == "take":
+    print(f"I gave you ${amount_of_money}")
+    amount_of_money = 0
 
+print("")
+print("The coffee machine has:")
+print(f"{amount_of_water} of water")
+print(f"{amount_of_milk} of milk")
+print(f"{amount_of_beans} of coffee beans")
+print(f"{amount_of_cups} of disposable cups")
+print(f"{amount_of_money} of money")
